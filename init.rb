@@ -13,17 +13,22 @@ Redmine::Plugin.register :redmine_information do
   setmap[:use_dot] = false
   setmap[:dot_cmdpath] = 'dot'
   settings(:default => setmap,
-           :partial => 'settings/info_settings')
+    :partial => 'settings/info_settings')
+
+  project_module :information_plugin do
+    permission :view_information, {:info => :show}
+  end
+
   menu(:top_menu, :redmine_info,
-       { :controller => 'info', :action => 'show', :id => :version },
-       :if => Proc.new { User.current.logged? })
+    { :controller => 'info', :action => 'show', :id => :version },
+    :if => Proc.new { User.current.allowed_to?({:controller => 'info', :action => 'show'},nil, :global => true) })
 
 end
 
 
 Redmine::MenuManager.map :redmine_info_menu do |menu|
   InfoCategory.push_menu(menu, :permissions, :label_permissions_report, 
-                       :html => {:class => 'roles'})
+    :html => {:class => 'roles'})
   InfoCategory.push_menu(menu, :workflows, :label_workflow)
                                     
   InfoCategory.push_menu(menu, :settings)
@@ -31,5 +36,5 @@ Redmine::MenuManager.map :redmine_info_menu do |menu|
   InfoCategory.push_menu(menu, :wiki_macros)
   InfoCategory.push_menu(menu, :rails_info)
   InfoCategory.push_menu(menu, :version, :label_information_plural,
-                         {:last => true, :html=>{:class => 'info'}})
+    {:last => true, :html=>{:class => 'info'}})
 end
