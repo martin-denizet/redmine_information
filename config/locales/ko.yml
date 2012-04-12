@@ -1,0 +1,22 @@
+# Translation by Ki Won Kim (http://xyz37.blog.me, xyz37@naver.com)
+ko:
+  label_redmine_info: "정보"
+
+  label_info_categories: "정보 범주"
+  label_hide_info_categories: "숨길 정보 범주 선택"
+  label_workflow_chart: "업무흐름 차트"
+  label_use_dot: "Graphviz(dot) 사용(http://www.graphviz.org 설치 해야함)"
+  label_dot_cmdpath: "\"dot\"의 파일 경로"
+  descript_dot_cmdpath: "빈칸이면 \"dot\" 이 사용됨."
+
+  label_wiki_macros: "위키 매크로"
+  label_rails_info: "Rails 정보"
+
+  label_all_ng: "모두 NG"
+
+  text_no_public: "이 범주의 정보는 공용화 할 수 없습니다."
+  text_err_dot: "dot 명령이 실패 했습니다."
+  text_no_rails_info: "이 Rails 버전에서는 Rails 정보를 보여줄 수 없습니다."
+
+  label_notification: "알림"
+  label_action: "동작"

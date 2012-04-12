@@ -1,0 +1,22 @@
+ja:
+  label_redmine_info: 情報
+
+  label_info_categories: カテゴリ
+  label_hide_info_categories: 非表示にするカテゴリの選択
+  label_workflow_chart: ワークフロー チャート
+  label_use_dot: Graphviz(dot) を使用する
+  label_dot_cmdpath: dot コマンドのパス
+  descript_dot_cmdpath: 省略時は "dot"
+
+  label_wiki_macros: Wiki マクロ
+  label_rails_info: Rails 情報
+
+  label_all_ng: すべて不可
+
+  text_no_public: このカテゴリの情報は公開されていません。
+  text_err_dot: dot コマンドの実行に失敗しました。
+  text_no_rails_info: 現在のバージョンの Rails では Rails 情報を表示できません。
+
+  label_notification: 通知
+  label_action: アクション
+

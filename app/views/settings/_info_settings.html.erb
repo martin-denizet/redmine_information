@@ -1,0 +1,24 @@
+
+<h3> <%=h l(:label_hide_info_categories) %> </h3>
+<table>
+<% InfoCategory.categories.each {|catsym| %>
+  <% name = "hide_#{catsym}" %>
+  <tr><td>
+  <%= check_box_tag("settings[#{name}]", 1, @settings[name]) %>
+  <%= InfoCategory.label(catsym) %>
+  </td></tr>
+<% } %>
+</table>
+<br />
+
+<h3> <%=h l(:label_workflow_chart) %> </h3>
+<%= check_box_tag("settings[use_dot]", 1, @settings[:use_dot],
+:onclick => "if (this.checked) { Form.Element.enable('settings_dot_cmdpath'); } else { Form.Element.disable('settings_dot_cmdpath'); }") %>
+<%=h l(:label_use_dot) %>
+
+<table>
+<tr><td> <%=h l(:label_dot_cmdpath) %> </td><td>
+<%= text_field_tag('settings[dot_cmdpath]', @settings[:dot_cmdpath], :size => 80)%>
+</td></tr>
+<tr><td></td><td><em> <%=h l(:descript_dot_cmdpath) %> </em></td></tr>
+</table>

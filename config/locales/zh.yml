@@ -1,0 +1,21 @@
+zh:
+  label_redmine_info: 系统信息
+
+  label_info_categories: 系统信息分类
+  label_hide_info_categories: 设置用户不可见信息
+  label_workflow_chart: 工作流程图
+  label_use_dot: 使用Graphviz(DOT)展示
+  label_dot_cmdpath: DOT 文件路径
+  descript_dot_cmdpath: 若为空，则DOT已被使用
+
+  label_wiki_macros: Wiki 宏信息
+  label_rails_info: Rails 版本信息
+
+  label_all_ng: 未分级用户（ALL NG）
+
+  text_no_public: "此类信息不能设置为公开浏览。"
+  text_err_dot: 无法执行DOT命令。
+  text_no_rails_info: "无法显示当前所用Rails的版本。"
+  
+  label_notification: 已配置
+  label_action: 通知处理内容

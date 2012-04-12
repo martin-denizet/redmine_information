@@ -1,0 +1,60 @@
+[[Redmine インフォメーション プラグイン|日本語]]
+
+
+h1. Redmine information plugin
+
+{{>toc}}
+
+This plug-in is made to be able to attend information such as 
+the Permissions report and the workflow from the general user.
+In the case of the workflow, the flow charts is viewable.
+
+
+(This is renamed from _"Administration report plugin"_ )
+
+
+h2. Feauture
+
+Information Contents
+
+* Permissions report
+* Workflow
+* Keywords in commit messages for repository
+* Installed plugins
+* A List of wiki macros
+* Rails information (default invisible)
+* Current Redmine version
+
+These information to display is selectable.
+If a administor user, all information is shown and _"Adminestration menu"_ is also shown in a side bar.
+
+
+h2. Download
+
+http://sourceforge.jp/projects/rp-information/releases/
+
+
+
+h2. Install
+
+# Extends the dawnloaded package in vender/plugins directory.
+# Restart Redmine WEB server.
+
+cf. http://www.redmine.org/wiki/1/Plugins
+
+h3. Show Work flow charts
+
+# Install "Graphviz":http://www.graphviz.org/ , and set PATH.
+# Check *"Use graphviz(dot)"* in this plugin setting page.
+
+But *"can't show charts in IE8"* which don't support SVG.
+And Redmine version needs 1.2.0 or later.
+
+
+h2. Usage
+
+View information form *Information* menu item in the top menu.
+
+!workflow_en.png!
+
+!permissions_en.png!

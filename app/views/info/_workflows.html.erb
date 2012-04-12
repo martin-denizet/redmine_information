@@ -1,0 +1,87 @@
+
+<% content_for :header_tags do %>
+<%= stylesheet_link_tag 'redmine_info.css', :plugin => 'redmine_information' %>
+<% end %>
+
+
+<% if @workflow_counts.empty? %>
+<p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+<div class="autoscroll">
+<table class="list">
+<thead>
+    <tr>
+    <th></th>
+    <% @workflow_counts.first.last.each do |role, count|
+      next    if @workflow_all_ng_roles.include?(role)
+      hclass = (role == @role) ? {:class=>"selected"} : {} %>
+      <% content_tag('th', hclass) do -%>
+        <%= content_tag(role.builtin? ? 'em' : 'span', h(role.name)) %>
+      <% end -%>
+    <% end %>
+    </tr>
+</thead>
+<tbody>
+<% @workflow_counts.each do |tracker, roles| -%>
+<tr class="<%= cycle('odd', 'even') %>">
+  <%= content_tag('td', tracker, ((tracker == @tracker) ? {:class=>"selected"} : {})) %>
+  <% roles.each do |role, count|
+      next    if @workflow_all_ng_roles.include?(role)  -%>
+    <% if (role == @role and tracker == @tracker) %>
+      <%= content_tag('td', count, {:class=>'target', :align=>'center'}) %>
+    <% else %>
+      <td align="center">
+      <% if (count > 0) %>
+        <%= link_to(count, {:id => :workflows,
+	                    :role_id => role, :tracker_id => tracker}) %>
+      <% else %>
+         0
+      <% end %>
+      </td>
+    <% end %>
+  <% end -%>
+</tr>
+<% end -%>
+</tbody>
+</table>
+  <% unless @workflow_all_ng_roles.empty? %>
+    <%=h l(:label_all_ng) %> :
+    <%=h @workflow_all_ng_roles.map{|role| role.name }.join(', ') %>
+  <% end %>
+</div>
+<% end %>
+
+
+
+<% if @tracker && @role && @statuses.any?
+   target_title = "#{@role.name} - #{@tracker}"
+%>
+
+<h3> <%=h target_title %> </h3>
+
+
+<%   if @workflows %>
+
+<%=    render(:partial => 'info/flows_table',
+              :locals => {:target_title => target_title, :workflows => @workflows['always'],
+			  :sub_workflows => false}) %>
+
+<%     for name in ['author', 'assignee'] %>
+
+<h4><%= t('label_additional_workflow_transitions_for_' + name) %></h4>
+
+<%       if (workflows_empty?(@statuses, @workflows[name])) %>
+<p> <%= l(:label_no_data) %> </p>
+<%        else %>
+<%= render(:partial => 'info/flows_table',
+           :locals => {:target_title => target_title, :workflows => @workflows[name],
+		       :sub_workflows => @workflows['always']}) %>
+<%       end %>
+<%     end %>
+
+<%   else %>
+<%=    render(:partial => 'info/old_flows_table') %>
+<%   end %>
+
+<% end %>
+

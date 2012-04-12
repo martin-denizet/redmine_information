@@ -1,0 +1,21 @@
+en:
+  label_redmine_info: Information
+
+  label_info_categories: Information categories
+  label_hide_info_categories: Selections of hidden information categories
+  label_workflow_chart: Work flow chart
+  label_use_dot: Use Graphviz(dot)
+  label_dot_cmdpath: The file path of "dot"
+  descript_dot_cmdpath: If this is blank, "dot" is used.
+
+  label_wiki_macros: Wiki macros
+  label_rails_info: Rails information
+
+  label_all_ng: ALL NG
+
+  text_no_public: "Information on this category isn't made public."
+  text_err_dot: Failed to execute dot command.
+  text_no_rails_info: "Can't show Rails infomation in this Rails version."
+
+  label_notification: Notification
+  label_action: Action

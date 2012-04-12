@@ -1,0 +1,46 @@
+h1. Release Note
+
+h2. 0.2.4
+
+h3. 日本語
+
+機能追加
+# 簡易中国語のメッセージファイル追加
+
+不具合修正
+# チケットステータスの表示位置を変更した場合、ワークフロー図にラベルが正しく表示されない
+# E-mail の通知の設定をしていないのに、 メール通知の情報が表示される
+
+h3. English
+
+Feature
+# Add Simplified Chinese translation
+
+Defect
+# Work flow charts are wrong, if positions of isssue status is changed.
+# Email notification's information is shown though it's disabled
+
+
+h2. 0.2.5
+
+
+h3. English
+
+Feature
+# Enables to specify the command path of Graphiviz(dot).
+# Adds Korean translation
+# Shows settings of repository comment for time logging.
+
+Defect
+# Routes error which the routes had been changed from revision 8162 of Redmine trunk.
+
+
+h3. 日本語
+
+機能追加
+# Graphiviz(dot) のパスを指定可能に変更
+# 韓国語のメッセージファイル追加
+# 作業時間の記録に関するリポジトリコメントの設定を表示
+
+不具合修正
+# 開発版 Redmine(revision 8162) で routes が変更されたことへの対応

@@ -1,0 +1,65 @@
+
+<h3><%=h l(:field_mail_notification)%></h3>
+
+<% if @deliveries %>
+<div class='wiki'>
+<table>
+<tr><th> <%=h l(:label_notification)%> </th><th><%=h l(:label_action)%> </th></tr>
+<% @notifiables.each do |notifiable| %>
+<tr><td align="center">
+<%= show_bool(Setting.notified_events.include?(notifiable.name)) %>
+</td><td>
+<% if notifiable.parent.present? %>
+&nbsp; &nbsp; 
+<% end %>
+<%=h t("label_" + notifiable.name) %>
+</td></tr>
+<% end %>
+</table>
+</div>
+<% else %>
+<div class="nodata">
+<%= simple_format(l(:text_email_delivery_not_configured)) %>
+</div>
+<% end %>
+
+<h3><%=h l(:label_repository)%></h3>
+
+<table>
+<tr>
+<th><%=h l(:setting_repositories_encodings) %>:</th>
+<td><%=h (Setting[:repositories_encodings].blank?) ? '(utf-8)' : Setting[:repositories_encodings] %></td>
+</tr>
+</table>
+
+<h4><%=h l(:text_issues_ref_in_commit_messages) %></h4>
+
+<table>
+<tr>
+<th><%=h l(:setting_commit_ref_keywords) %>:</th>
+<td><%=h Setting[:commit_ref_keywords] %></td>
+</tr>
+<tr>
+
+<th><%=h l(:setting_commit_fix_keywords) %>:</th>
+<td><%=h Setting[:commit_fix_keywords] %></td>
+</tr>
+<tr>
+<td></td>
+<td>
+<%=h l(:label_applied_status) %>: <%=h @commit_fix_status %><br />
+<%=h l(:field_done_ratio) %>: <%=h @commit_fix_done_ratio %>
+</td>
+</tr>
+
+<tr>
+<th> <%=h l(:setting_commit_logtime_enabled) %> </th>
+<td> <%= show_bool(@commit_logtime_enabled, "--") %> </td>
+</tr>
+<% if (@commit_logtime_enabled) %>
+<tr>
+<td></td>
+<td> <%=h l(:setting_commit_logtime_activity_id) %> : <%=h @commit_logtime_activity_name %> </td>
+</tr>
+<% end %>
+</table>

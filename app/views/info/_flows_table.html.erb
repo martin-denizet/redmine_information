@@ -1,0 +1,37 @@
+<table class="list">
+<thead>
+  <tr>
+    <th align="left"> <%=l(:label_current_status)%> </th>
+    <th align="center" colspan="<%= @statuses.length %>"><%=l(:label_new_statuses_allowed)%></th>
+  </tr>
+  <tr>
+    <td></td>
+    <% for new_status in @statuses %>
+    <td width="<%= 75 / @statuses.size %>%" align="center">
+      <%=h new_status.name %>
+    </td>
+    <% end %>
+  </tr>
+</thead>
+<tbody>
+  <% for old_status in @statuses %>
+  <tr class="<%= cycle("odd", "even") %>">
+    <td><%=h old_status.name %></td>
+    <% for new_status in @statuses -%>
+    <td align="center">
+      <% if (sub_workflows &&
+             sub_workflows.detect {|w| w.old_status_id == old_status.id && w.new_status_id == new_status.id}) %>
+      <span class="icon icon-weak"></span>
+      <% elsif workflows.detect {|w| w.old_status_id == old_status.id && w.new_status_id == new_status.id} %>
+      <span class="icon icon-checked"></span>
+      <% end %>
+    </td>
+    <% end -%>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+
+<% if Setting.plugin_redmine_information['use_dot'] %>
+  <%= create_workflow_chart(target_title, @statuses, workflows, sub_workflows) %>
+<% end %>
